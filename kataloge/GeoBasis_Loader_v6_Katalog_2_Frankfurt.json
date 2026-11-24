@@ -1,0 +1,282 @@
+{
+  "ffm_umwelt": {
+    "menu": "FFM: Umwelt & Klima",
+    "themen": {
+      "gruenguertel": {
+        "name": "FFM: GrünGürtel (WMS)",
+        "gbl-view": "true",
+        "type": "ogc_wms",
+        "valid_epsg": [
+          "EPSG:25832",
+          "EPSG:4326",
+          "EPSG:3857",
+          "EPSG:4647",
+          "EPSG:31467"
+        ],
+        "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=GruenGuertel_nach_Stadtverordnetenbeschluss&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/WMS_GruenGuertel",
+        "opacity": 0.75
+      },
+      "biotope_2021_layergroup": {
+        "name": "FFM: Biotopkartierung 2021 (WMS)",
+        "layers": {
+          "biotope_m5": {
+            "name": "FFM: Biotope 2021 M5 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=M5_Biotope_2021&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Biotopkartierung_2021_WMS",
+            "opacity": 0.75
+          },
+          "biotope_m10": {
+            "name": "FFM: Biotope 2021 M10 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=M10_Biotope_2021&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Biotopkartierung_2021_WMS",
+            "opacity": 0.75
+          },
+          "biotope_m25": {
+            "name": "FFM: Biotope 2021 M25 (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=M25_Biotope_2021&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Biotopkartierung_2021_WMS",
+            "opacity": 0.75
+          }
+        }
+      },
+      "klimaschutz_layergroup": {
+        "name": "FFM: Klimaschutzstadtplan (WMS)",
+        "layers": {
+          "ks_staedtische_projekte": {
+            "name": "FFM: Klimaschutz – Städtische Projekte (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Staedtische_Projekte&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_abwaermenutzung": {
+            "name": "FFM: Klimaschutz – Abwärmenutzung (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Abwaermenutzung&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_mobilitaet": {
+            "name": "FFM: Klimaschutz – Mobilität (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Mobilitaet&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_konzepte_initiativen": {
+            "name": "FFM: Klimaschutz – Konzepte & Initiativen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Konzepte_Initiativen&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_regenerative_energien": {
+            "name": "FFM: Klimaschutz – Regenerative Energien (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Regenerative_Energien&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_energieerzeugung": {
+            "name": "FFM: Klimaschutz – Energieerzeugung (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Energieerzeugung&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          },
+          "ks_bau": {
+            "name": "FFM: Klimaschutz – Bau (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bau&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/Klimaschutzstadtplan",
+            "opacity": 0.75
+          }
+        }
+      }
+    }
+  },
+  "ffm_planung": {
+    "menu": "FFM: Planung",
+    "themen": {
+      "gestaltungssatzungen_layergroup": {
+        "name": "FFM: Gestaltungssatzungen (WMS)",
+        "layers": {
+          "gs_rv": {
+            "name": "FFM: Gestaltungssatzungen rechtsverbindlich (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gs-rv&styles&tilePixelRatio=0&url=https://planas.frankfurt.de/wms/gestaltungssatzungen",
+            "opacity": 0.75
+          },
+          "gs_iv": {
+            "name": "FFM: Gestaltungssatzungen im Verfahren (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=gs-iv&styles&tilePixelRatio=0&url=https://planas.frankfurt.de/wms/gestaltungssatzungen",
+            "opacity": 0.75
+          }
+        }
+      },
+      "gestaltungssatzungen_wfs_layergroup": {
+        "name": "FFM: Gestaltungssatzungen (WFS)",
+        "layers": {
+          "gs_rv_wfs": {
+            "name": "FFM: Gestaltungssatzungen rechtsverbindlich (WFS)",
+            "gbl-view": "true",
+            "type": "ogc_wfs",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326"
+            ],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='gs-rv' url='https://planas.frankfurt.de/wfs/gestaltungssatzungen' version='1.1.0'",
+            "opacity": 0.75
+          },
+          "gs_iv_wfs": {
+            "name": "FFM: Gestaltungssatzungen im Verfahren (WFS)",
+            "gbl-view": "true",
+            "type": "ogc_wfs",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326"
+            ],
+            "uri": "pagingEnabled='default' preferCoordinatesForWfsT11='false' restrictToRequestBBOX='1' srsname='EPSG:placeholder' typename='gs-iv' url='https://planas.frankfurt.de/wfs/gestaltungssatzungen' version='1.1.0'",
+            "opacity": 0.75
+          }
+        }
+      }
+    }
+  },
+  "ffm_bildung": {
+    "menu": "FFM: Bildung",
+    "themen": {
+      "schulbezirke_layergroup": {
+        "name": "FFM: Schulbezirke (WMS)",
+        "layers": {
+          "grundschulbezirke": {
+            "name": "FFM: Grundschulbezirke (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Grundschulbezirke&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/WMS_Schulbezirke",
+            "opacity": 0.75
+          },
+          "ueberschneidung": {
+            "name": "FFM: Überschneidungsgebiete (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Ueberschneidungsgebiete&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/WMS_Schulbezirke",
+            "opacity": 0.75
+          },
+          "bildungsregionen": {
+            "name": "FFM: Bildungsregionen (WMS)",
+            "gbl-view": "true",
+            "type": "ogc_wms",
+            "valid_epsg": [
+              "EPSG:25832",
+              "EPSG:4326",
+              "EPSG:3857",
+              "EPSG:4647",
+              "EPSG:31467"
+            ],
+            "uri": "contextualWMSLegend=0&crs=EPSG:placeholder&dpiMode=7&featureCount=10&format=image/png&layers=Bildungsregionen&styles&tilePixelRatio=0&url=https://geowebdienste.frankfurt.de/WMS_Schulbezirke",
+            "opacity": 0.75
+          }
+        }
+      }
+    }
+  }
+}

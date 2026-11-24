@@ -1,0 +1,84 @@
+# Baut bei jedem Tag "vX.Y.Z" ein installierbares QGIS-Plugin-ZIP und hängt es an ein GitHub-Release.
+# Zusätzlich entsteht plugins.xml – damit lässt sich der Fork in QGIS als eigenes Plugin-Repository eintragen:
+#   https://github.com/<OWNER>/<REPO>/releases/latest/download/plugins.xml
+name: Release QGIS-Plugin
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  PLUGIN_DIR: GeoBasis_Loader_FFM   # Ordnername im ZIP = Plugin-ID in QGIS
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version aus metadata.txt mit Tag abgleichen
+        id: meta
+        run: |
+          VERSION=$(grep -E '^version=' metadata.txt | cut -d= -f2 | tr -d '\r ')
+          TAG="${GITHUB_REF_NAME#v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "::error::Tag v$TAG passt nicht zu version=$VERSION in metadata.txt"; exit 1
+          fi
+
+      - name: Katalog-JSON prüfen
+        run: |
+          for f in kataloge/*.json; do python3 -m json.tool "$f" > /dev/null || { echo "::error::$f ist kein gültiges JSON"; exit 1; }; done
+          python3 - <<'PY'
+          import json, pathlib
+          k = pathlib.Path("kataloge")
+          for e in json.loads((k / "GeoBasis_Loader_v6_Kataloge.json").read_text()):
+              f = k / (e["name"] + ".json")
+              assert f.exists(), f"In der Übersicht eingetragen, aber nicht vorhanden: {f}"
+          print("Übersicht und Katalogdateien passen zusammen")
+          PY
+
+      - name: Plugin-ZIP bauen
+        run: |
+          mkdir -p build
+          # nur eingecheckte Dateien, ohne GitHub-/Entwicklungsdateien
+          git archive --format=tar --prefix="$PLUGIN_DIR/" HEAD | tar -x -C build
+          rm -rf "build/$PLUGIN_DIR/.github" "build/$PLUGIN_DIR/.gitignore" "build/$PLUGIN_DIR/pb_tool.cfg"
+          cd build && zip -r "$PLUGIN_DIR-${{ steps.meta.outputs.version }}.zip" "$PLUGIN_DIR"
+
+      - name: plugins.xml erzeugen
+        run: |
+          V="${{ steps.meta.outputs.version }}"
+          get() { grep -E "^$1=" metadata.txt | head -1 | cut -d= -f2- | tr -d '\r'; }
+          ZIP="$PLUGIN_DIR-$V.zip"
+          URL="https://github.com/${{ github.repository }}/releases/download/${GITHUB_REF_NAME}/$ZIP"
+          cat > build/plugins.xml <<XML
+          <?xml version="1.0" encoding="UTF-8"?>
+          <plugins>
+            <pyqgis_plugin name="$(get name)" version="$V">
+              <description><![CDATA[$(get description)]]></description>
+              <version>$V</version>
+              <qgis_minimum_version>$(get qgisMinimumVersion)</qgis_minimum_version>
+              <qgis_maximum_version>$(get qgisMaximumVersion)</qgis_maximum_version>
+              <homepage>$(get homepage)</homepage>
+              <file_name>$ZIP</file_name>
+              <author_name><![CDATA[$(get author)]]></author_name>
+              <download_url>$URL</download_url>
+              <repository>$(get repository)</repository>
+              <tracker>$(get tracker)</tracker>
+              <experimental>False</experimental>
+              <deprecated>False</deprecated>
+            </pyqgis_plugin>
+          </plugins>
+          XML
+
+      - name: GitHub-Release anlegen
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/*.zip
+            build/plugins.xml
+          generate_release_notes: true

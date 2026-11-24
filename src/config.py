@@ -1,5 +1,6 @@
 from enum import Enum
 import configparser
+import re
 import pathlib
 from dataclasses import dataclass
 from typing import Optional
@@ -7,7 +8,23 @@ from qgis.core import QgsSettings, QgsApplication
 
 
 PLUGIN_DIR = pathlib.Path(__file__).resolve().parents[1]
-PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / "geobasis_loader"
+
+# ---------------------------------------------------------------------------
+# FORK-EINSTELLUNGEN: Woher der Loader seine Kataloge holt.
+# Owner und Repo werden aus "repository=" in metadata.txt gelesen
+# (z. B. https://github.com/winky/geobasis_loader/). Die Werte hier sind nur
+# Rückfallwerte, falls metadata.txt keinen GitHub-Link enthält.
+# ---------------------------------------------------------------------------
+GITHUB_OWNER = "DEIN-GITHUB-NAME"
+GITHUB_REPO = "geobasis_loader"
+GITHUB_BRANCH = "main"
+CATALOG_DIR_IN_REPO = "kataloge"
+
+# Eigener Schlüssel für QGIS-Einstellungen, Presets und Logger, damit der Fork
+# neben dem Original-GeoBasis_Loader installiert sein kann, ohne sich zu stören.
+SETTINGS_PREFIX = "geobasis_loader_ffm"
+
+PLUGIN_USER_DIR = pathlib.Path(QgsApplication.qgisSettingsDirPath()) / SETTINGS_PREFIX
 
 RESOURCES_DIR = PLUGIN_DIR / "resources"
 PRESETS_DIR = PLUGIN_USER_DIR / "presets"
@@ -62,11 +79,16 @@ def read_metadata(metadata_path: Optional[pathlib.Path] = None) -> PluginInfo:
 
 plugin_info = read_metadata()
 
+_repo_match = re.search(r"github\.com/([^/]+)/([^/?#]+)", plugin_info.repository or "")
+if _repo_match:
+    GITHUB_OWNER = _repo_match.group(1)
+    GITHUB_REPO = _repo_match.group(2).removesuffix(".git")
+
 PLUGIN_NAME = plugin_info.name
 PLUGIN_NAME_AND_VERSION = PLUGIN_NAME + ' (v' + plugin_info.version + ')'
 
 REQUEST_TIMEOUT_MS = 10000
-PLUGIN_LOGGER_NAME = "geobasis_loader"
+PLUGIN_LOGGER_NAME = SETTINGS_PREFIX
 TOOLBAR_NAME = "geoObserverTools"
 LOGGING_SUCCESS_LEVEL = 25
 PRESET_FORMAT_VERSION = 7.00
@@ -81,8 +103,10 @@ CATALOG_OVERVIEW = "GeoBasis_Loader_v6_Kataloge.json"
 CATALOG_OVERVIEW_NAME = "catalog_overview"
 
 class ServerHosts(str, Enum):
-    GEOOBSERVER = "https://geoobserver.de/download/GeoBasis_Loader/{name}"
-    GITHUB = "https://api.github.com/repos/geoObserver/geobasis_loader/contents/kataloge/{name}?ref=main"
+    # Server 1: raw.githubusercontent.com (kein API-Ratenlimit, ca. 5 Min. CDN-Cache)
+    GITHUB_RAW = f"https://raw.githubusercontent.com/{GITHUB_OWNER}/{GITHUB_REPO}/{GITHUB_BRANCH}/{CATALOG_DIR_IN_REPO}/{{name}}"
+    # Server 2: GitHub Contents API (sofort aktuell, aber max. 60 Anfragen/Stunde ohne Login)
+    GITHUB = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/contents/{CATALOG_DIR_IN_REPO}/{{name}}?ref={GITHUB_BRANCH}"
     
     @classmethod
     def get_all_servers(cls) -> list[str]:
@@ -102,11 +126,11 @@ class ServerHosts(str, Enum):
         return servers
     
 class QgsSettingsKeys(str, Enum):
-    CURRENT_CATALOG = 'geobasis_loader/current_catalog'
-    AUTOMATIC_CRS = 'geobasis_loader/automatic_crs'
-    SERVERS = 'geobasis_loader/servers'
-    SHOW_GBL_PANEL = 'geobasis_loader/show_gbl_panel'
-    DISPLAY_HIGHLIGHT_FAVORITES = 'geobasis_loader/display_highlight_favorites'
-    PROPERTY_FAVORITE = 'geobasis_loader/properties/favorite'
-    PROPERTY_INVISIBLE = 'geobasis_loader/properties/invisible'
-    PROPERTY_DISABLED = 'geobasis_loader/properties/disabled'
+    CURRENT_CATALOG = SETTINGS_PREFIX + '/current_catalog'
+    AUTOMATIC_CRS = SETTINGS_PREFIX + '/automatic_crs'
+    SERVERS = SETTINGS_PREFIX + '/servers'
+    SHOW_GBL_PANEL = SETTINGS_PREFIX + '/show_gbl_panel'
+    DISPLAY_HIGHLIGHT_FAVORITES = SETTINGS_PREFIX + '/display_highlight_favorites'
+    PROPERTY_FAVORITE = SETTINGS_PREFIX + '/properties/favorite'
+    PROPERTY_INVISIBLE = SETTINGS_PREFIX + '/properties/invisible'
+    PROPERTY_DISABLED = SETTINGS_PREFIX + '/properties/disabled'

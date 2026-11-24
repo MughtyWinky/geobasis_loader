@@ -57,14 +57,14 @@ class GeoBasis_Loader(QObject):
                 # Main menu action
                 action_icon = icons.get_icon(icons.IconKey.TOOLBAR_MAIN_MENU_ICON)
                 self.toolbar_main_menu_action = QAction(action_icon, config.PLUGIN_NAME_AND_VERSION, main_window)
-                self.toolbar_main_menu_action.setObjectName("toolbar-geobasis_loader-main_menu")
+                self.toolbar_main_menu_action.setObjectName(f"toolbar-{config.SETTINGS_PREFIX}-main_menu")
                 self.toolbar_main_menu_action.triggered.connect(self._show_main_menu)
                 self.toolbar.addAction(self.toolbar_main_menu_action)
                 
                 # GBL panel action
                 action_icon = icons.get_icon(icons.IconKey.TOOLBAR_GBL_PANEL_ICON)
                 self.toolbar_gbl_panel_action = QAction(action_icon, "Katalogbrowser öffnen/schließen", main_window)
-                self.toolbar_gbl_panel_action.setObjectName("toolbar-geobasis_loader-gbl_panel")
+                self.toolbar_gbl_panel_action.setObjectName(f"toolbar-{config.SETTINGS_PREFIX}-gbl_panel")
                 self.toolbar_gbl_panel_action.setCheckable(True)
                 self.gbl_panel.setToggleVisibilityAction(self.toolbar_gbl_panel_action)
                 self.toolbar.addAction(self.toolbar_gbl_panel_action)

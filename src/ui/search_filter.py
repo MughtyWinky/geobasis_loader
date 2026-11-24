@@ -16,7 +16,7 @@ class SearchFilter(QgsLocatorFilter):
 
     # @override
     def name(self) -> str:
-        return "GeoBasis_Loader Suche"
+        return "GeoBasis_Loader FFM Suche"
     
     # @override
     def displayName(self) -> str:
@@ -24,11 +24,11 @@ class SearchFilter(QgsLocatorFilter):
 
     # @override
     def description(self) -> str:
-        return "Nach einem Thema im GeoBasis_Loader suchen"
+        return "Nach einem Thema im GeoBasis_Loader FFM suchen"
     
     # @override
     def prefix(self) -> str:        
-        return "gbl"
+        return "gblf"
     
     # @override
     def clone(self) -> Optional[QgsLocatorFilter]:

@@ -1,12 +1,12 @@
 [general]
-name=GeoBasis_Loader
+name=GeoBasis_Loader_FFM
 qgisMinimumVersion=3.40
 qgisMaximumVersion=4.99
-version=2.2.0
-author=Anton May, Mike Elstermann (#geoObserver)
-email=news@geoobserver.de
+version=2.2.1
+author=Philipp Winkemann (Fork), basierend auf GeoBasis_Loader von Anton May, Mike Elstermann (#geoObserver)
+email=Philipp.Winkemann@fra-uas.de
 
-description=Einfaches Finden und Einfügen ausgewählter freier Geodienste // Easy finding and insertion of selected free geoservices
+description=Fork mit eigenen Katalogen (basemap.de, Hessen, Frankfurt am Main) // Einfaches Finden und Einfügen ausgewählter freier Geodienste // Easy finding and insertion of selected free geoservices
 
 about=(18.05.2026)
 		Das Plugin vereinfacht das Finden und Einfügen ausgewählter WMS-, WMTS-, WFS-, WCS-, und VectorTiles-Dienste aus den Open Data Portalen der Landesvermessungsämter sowie von Hintergrundkarten (OSM, Basemap.de) zum aktuellen View. Ziel ist es, eine deutschlandweite Sammlung der GeoBasisdaten mit aktuellen Links anzubieten. 
@@ -32,16 +32,17 @@ tags=wms, wmts, wfs, wcs, ogc api features, vector tiles, germany, deutschland, 
 category=Web
 icon=GeoBasis_Loader_icon.png
 
-homepage=https://geobasisloader.de/
-repository=https://github.com/geoObserver/geobasis_loader/
-tracker=https://github.com/geoObserver/geobasis_loader/issues/
+homepage=https://github.com/MughtyWinky/geobasis_loader
+repository=https://github.com/MughtyWinky/geobasis_loader/
+tracker=https://github.com/MughtyWinky/geobasis_loader/issues/
 
 experimental=False
 deprecated=False
 server=False
 hasProcessingProvider=False
 
-changelog=2.2.0 GBL-Fenster mit allen Kernfunktionen hinzugefügt, Erweiterung Presets mit räumlichen Lesezeichen, Einführung erweiterter interner Suchfunktion
+changelog=2.2.1 Fork: Kataloge aus eigenem GitHub-Repo, nur basemap.de, Hessen und Frankfurt am Main
+    2.2.0 GBL-Fenster mit allen Kernfunktionen hinzugefügt, Erweiterung Presets mit räumlichen Lesezeichen, Einführung erweiterter interner Suchfunktion
     2.1.1 Bugfix: Falsche Protokollierung von Netzwerkfehlern, Fehlerhafte Initialisierung bei Erstinstallation
     2.1.0 Favoriten, Zusammenstellungen und Code-Refactoring
     2.0.0 Qt5- & Qt6-Kompatibilität (für QGIS 4)

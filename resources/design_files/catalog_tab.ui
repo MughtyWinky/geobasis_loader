@@ -395,7 +395,7 @@
          </size>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;E-Mail an &lt;a href=&quot;mailto:kontakt@geobasisloader.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0066cc;&quot;&gt;kontakt@geobasisloader.de&lt;/span&gt;&lt;/a&gt; für Ergänzungen!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;E-Mail an &lt;a href=&quot;mailto:philipp.winkemann@fra-uas.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0066cc;&quot;&gt;philipp.winkemann@fra-uas.de&lt;/span&gt;&lt;/a&gt; für Ergänzungen! Fork!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="textFormat">
          <enum>Qt::RichText</enum>

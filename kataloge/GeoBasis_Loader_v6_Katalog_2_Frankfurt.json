@@ -3,7 +3,7 @@
     "menu": "FFM: Umwelt & Klima",
     "themen": {
       "gruenguertel": {
-        "name": "FFM: GrünGürtel (WMS)",
+        "name": "FFM: GrünGürtel (WMS) Demo",
         "gbl-view": "true",
         "type": "ogc_wms",
         "valid_epsg": [

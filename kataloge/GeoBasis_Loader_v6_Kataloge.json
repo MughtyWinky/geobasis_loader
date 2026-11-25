@@ -6,5 +6,9 @@
   {
     "titel": "Katalog 2: Frankfurt am Main",
     "name": "GeoBasis_Loader_v6_Katalog_2_Frankfurt"
+  },
+    {
+    "titel": "Katalog 3: HLNUG",
+    "name": "GeoBasis_Loader_v6_Katalog_3_HLNUG_Umwelt_Hessen"
   }
 ]
